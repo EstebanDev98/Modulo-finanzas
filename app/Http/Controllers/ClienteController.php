@@ -28,13 +28,27 @@ class ClienteController extends Controller
 
     public function cliente_detalles($id)
     {
-        $cliente = Cliente::find($id);
+      //  $cliente = Cliente::find($id);
 
-        if (!$cliente) {
-            return redirect()->route('cliente.formulario')->with('error', 'Cliente no encontrado');
-        }
+
+      $cliente = Cliente::with('clienteServicios.servicio')->find($id);
+
+      if (!$cliente) {
+          return redirect()->route('cliente.formulario')->with('error', 'Cliente no encontrado');
+      }
+  
+      return view('cliente_detalles', compact('cliente'));
+
+      //$cliente = Cliente::with('clienteServicio.servicios')->findOrFail($id);
+
+     // return view('cliente_detalles', compact('cliente'));
+
+
+       // if (!$cliente) {
+          //  return redirect()->route('cliente.formulario')->with('error', 'Cliente no encontrado');
+        //}
     
-        return view('cliente_detalles', compact('cliente'));
+       // return view('cliente_detalles', compact('cliente'));
         //$cliente = Cliente::findOrFail($id);
 
        // return view('cliente_detalles', compact('id'));

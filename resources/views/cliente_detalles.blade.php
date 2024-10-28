@@ -20,6 +20,20 @@
             </div>
         </div>
     </div>
+
+    @if($cliente->clienteServicios->isNotEmpty())
+        <h4>Servicios Asociados:</h4>
+        <ul class="list-group mt-3">
+            @foreach($cliente->clienteServicios as $clienteServicio)
+                <li class="list-group-item">
+                    Servicio: {{ $clienteServicio->servicio->nombre_servicio}} | Monto: ${{ number_format($clienteServicio->monto, 2) }}
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p class="mt-3">No hay servicios asociados a este cliente.</p>
+    @endif
+
 </div>
 @endsection
 
