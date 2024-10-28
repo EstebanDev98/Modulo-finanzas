@@ -28,4 +28,9 @@ class ClienteServicios extends Model
     {
         return $this->belongsTo(Servicio::class, 'servicios_id');
     }
+
+    public function facturas()
+    {
+        return $this->hasMany(Factura::class, 'Cservicios_id');
+    }
 }

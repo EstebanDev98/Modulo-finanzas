@@ -23,4 +23,9 @@ class Cliente extends Model
     {
         return $this->hasMany(ClienteServicios::class, 'clientes_id');
     }
+
+    public function facturas()
+    {
+        return $this->hasManyThrough(Factura::class, ClienteServicios::class, 'clientes_id', 'Cservicios_id');
+    }
 }

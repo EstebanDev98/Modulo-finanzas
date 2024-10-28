@@ -3,11 +3,13 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3>Información de: {{$cliente->nombre}}</h3>
+    <div class="row">
+    <!-- Informacion personal del cliente -->
+        <div class="row justify-content-start" style="margin-left: 20px;">
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3>Información de: {{$cliente->nombre}}</h3>
                 </div>
                 <div class="card-body">
                     <!-- Información Básica del Cliente -->
@@ -19,20 +21,51 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    @if($cliente->clienteServicios->isNotEmpty())
-        <h4>Servicios Asociados:</h4>
-        <ul class="list-group mt-3">
-            @foreach($cliente->clienteServicios as $clienteServicio)
-                <li class="list-group-item">
-                    Servicio: {{ $clienteServicio->servicio->nombre_servicio}} | Monto: ${{ number_format($clienteServicio->monto, 2) }}
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <p class="mt-3">No hay servicios asociados a este cliente.</p>
-    @endif
+        
+
+        <!-- Lista de servicios -->
+        <div class="col-md-6 mb-4">
+            @if($cliente->clienteServicios->isNotEmpty())
+            <h4>Servicios Asociados:</h4>
+                <ul class="list-group mt-3">
+                    @foreach($cliente->clienteServicios as $clienteServicio)
+                        <li class="list-group-item">
+                            Servicio: {{ $clienteServicio->servicio->nombre_servicio }} | Descripcion: {{ $clienteServicio->servicio->descripcion }} | Valor a pagar: ${{ number_format($clienteServicio->monto, 2) }}
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <p class="mt-3">No hay servicios asociados a este cliente.</p>
+            @endif
+        </div>
+
+
+        <!-- Lista de facturas -->
+        <h3>Facturas</h3>
+        @foreach($cliente->clienteServicios as $clienteServicio)
+            @if($clienteServicio->facturas->isEmpty())
+                <p>No hay facturas para el servicio: {{ $clienteServicio->servicio->nombre }}</p>
+            @else
+                <div class="card mb-3">
+                    <div class="card-header">Servicio: {{ $clienteServicio->servicio->nombre_servicio }}</div>
+                    <ul class="list-group list-group-flush">
+                        @foreach($clienteServicio->facturas as $factura)
+                            <li class="list-group-item">
+                                <p>Fecha de emisión: {{ $factura->fecha_emision }}</p>
+                                <p>Fecha de pago: {{ $factura->fecha_pago }}</p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        @endforeach
+
+     
+    
+    
+     
+
 
 </div>
 @endsection
