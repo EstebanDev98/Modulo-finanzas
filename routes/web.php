@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Ruta para la página principal
+Route::get('/', [HomeController::class, 'index']);
+
+// Rutas de autenticación
+Auth::routes();
+
+Route::get('/clientes/buscar', [ClienteController::class, 'formulario'])->name('cliente.formulario');
+
+Route::post('/clientes/buscar', [ClienteController::class, 'buscar'])->name('cliente.buscar.post');
+
+Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detalles'])->name('cliente.detalles');
+
+//Route::get('clientes', [HomeController::class, 'clientes'])->name('clientes.index');
+
+//Route::get('/cliente/detalles', [HomeController::class, 'cliente_detalles'])->name('cliente.detalles');
+
+// Ruta para la página de inicio después del login
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+
