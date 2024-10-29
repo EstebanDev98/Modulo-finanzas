@@ -40,7 +40,7 @@ class ServicioController extends Controller
         Servicio::create($request->validated());
 
         return Redirect::route('servicios.index')
-            ->with('success', 'Servicio created successfully.');
+            ->with('success', 'Servicio creado correctamente.');
     }
 
     /**
@@ -71,7 +71,7 @@ class ServicioController extends Controller
         $servicio->update($request->validated());
 
         return Redirect::route('servicios.index')
-            ->with('success', 'Servicio updated successfully');
+            ->with('success', 'Los datos han sido actualizados correctamente.');
     }
 
     public function destroy($id): RedirectResponse
@@ -79,6 +79,6 @@ class ServicioController extends Controller
         Servicio::find($id)->delete();
 
         return Redirect::route('servicios.index')
-            ->with('success', 'Servicio deleted successfully');
+            ->with('success', 'Servicio eliminado correctamente');
     }
 }
