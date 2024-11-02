@@ -21,4 +21,14 @@ class Factura extends Model
     {
         return $this->belongsTo(ClienteServicios::class, 'Cservicios_id');
     }
+
+    public function transacciones()
+    {
+        return $this->hasMany(Transaccion::class);
+    }
+
+    public function getEstadoAtributo()
+    {
+        return $this->transacciones()->latest()->value('estado') ?? 'pendiente';
+    }
 }

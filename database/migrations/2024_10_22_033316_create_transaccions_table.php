@@ -16,6 +16,9 @@ return new class extends Migration
             $table->foreignId('factura_id')
                   ->constrained('facturas')
                   ->onDelete('cascade');
+            $table->decimal('monto_pagado', 10,2);
+            $table->decimal('saldo_pendiente', 10,2);
+            $table->enum('estado', ['pendiente', 'pagado', 'mora'])->default('pendiente');
             $table->timestamps();
         });
     }

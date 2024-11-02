@@ -16,7 +16,7 @@
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" class="form-control" required>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="identificacion">Identificación</label>
             <input type="text" name="identificacion" id="identificacion" class="form-control" required>
         </div>

@@ -31,7 +31,7 @@ class ClienteController extends Controller
       //  $cliente = Cliente::find($id);
 
 
-      $cliente = Cliente::with('clienteServicios.facturas')->find($id);
+      $cliente = Cliente::with('clienteServicios.servicio', 'clienteServicios.facturas.transacciones')->find($id);
 
       if (!$cliente) {
           return redirect()->route('cliente.formulario')->with('error', 'Cliente no encontrado');
