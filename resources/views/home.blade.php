@@ -330,7 +330,8 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color: rgb(17, 17, 18)">
                     <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Bancapp
+                            <img src="{{ asset('img/logo_bancapp_ultimo.png') }}"  height="60" alt="MDB Logo" loading="lazy"/>
+                            <small>Bancapp</small>
                         </h6>
                         <p>
                             Here you can use rows and columns to organize your footer content. Lorem ipsum
@@ -404,7 +405,7 @@
       <div style="color: rgb(255, 255, 255)">
         <div class="text-center p-4" style="background-color: #000000;">
             © 2024 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Bancapp.com</a>
+            <a class="text-reset fw-bold" src="" href="https://mdbootstrap.com/">Bancapp.com</a>
         </div>
       </div>  
         <!-- Copyright -->

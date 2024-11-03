@@ -10,7 +10,7 @@ class ClienteController extends Controller
 
     public function formulario()
     {
-        return view('clientes');
+        return view('admin.clientes');
     }
     public function buscar(Request $request)
     {
@@ -37,7 +37,7 @@ class ClienteController extends Controller
           return redirect()->route('cliente.formulario')->with('error', 'Cliente no encontrado');
       }
   
-      return view('cliente_detalles', compact('cliente'));
+      return view('admin.cliente_detalles', compact('cliente'));
 
       //$cliente = Cliente::with('clienteServicio.servicios')->findOrFail($id);
 
