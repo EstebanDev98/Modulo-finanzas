@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ServicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +45,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 //ruta para el registro de ususarios
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
-
-
-
+//ruta para el crud de servicios
+Route::resource('servicios', ServicioController::class);
 
 

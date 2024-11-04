@@ -2,21 +2,40 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Servicio
+ *
+ * @property $id
+ * @property $nombre_servicio
+ * @property $descripcion
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property ClienteServicio[] $clienteServicios
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class Servicio extends Model
 {
-    use HasFactory;
-    protected $table = 'servicios';
+    
+    protected $perPage = 20;
 
-    protected $fillable = [
-       'nombre_servicio',
-       'descripcion',
-    ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = ['nombre_servicio', 'descripcion'];
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function clienteServicios()
     {
-        return $this->hasMany(ClienteServicios::class, 'servicios_id');
+        return $this->hasMany(\App\Models\ClienteServicio::class, 'id', 'servicios_id');
     }
+    
 }
