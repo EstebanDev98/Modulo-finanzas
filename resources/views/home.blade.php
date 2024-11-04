@@ -94,7 +94,7 @@
             <div class="collapse collapse-content" id="collapseActions" style="border-radius: 8px; background-color: #080808;">
                 <ul class="list-group">
                     <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a href="#" style="color: rgb(252, 255, 255); text-decoration: none;">Iniciar sesión</a>
+                        <a href="{{ route('login') }} " style="color: rgb(252, 255, 255); text-decoration: none;">Iniciar sesión</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a href="#" style="color: rgb(252, 255, 255); text-decoration: none;">Registrarse</a>
