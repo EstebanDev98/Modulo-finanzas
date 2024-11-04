@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,14 @@ Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detall
 // Ruta para la página de inicio después del login
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+//ruta para el login
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+//ruta para el registro de ususarios
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+
+
+
 
 
 

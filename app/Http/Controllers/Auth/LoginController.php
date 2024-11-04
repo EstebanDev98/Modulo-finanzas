@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public function index()
+    public function showLoginForm()
     {
         return view('auth.login');
     }
