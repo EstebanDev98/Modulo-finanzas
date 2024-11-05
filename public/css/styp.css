@@ -1,0 +1,14 @@
+form{
+  width: 500px;
+  margin: auto;
+  margin-top: 60px;
+  padding: 50PX;
+}
+
+.div-form{
+  margin: auto;
+  
+}
+.div-form input{
+  padding: 10px;
+}

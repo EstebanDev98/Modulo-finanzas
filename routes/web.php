@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
+use Illuminate\Routing\RouteRegistrar;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ServiceController::class,'index'])->name('inicio.index');
+Route::get('/vista_prestamos', [ServiceController::class,'ver_prestamos'])->name('vista.verprestamos');
+Route::post('/prestamos/servicio/', [ServiceController::class, 'store'])->name('servicio.store');

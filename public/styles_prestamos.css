@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+}
+header{
+    height: 10vh;
+    background-color: #8ec8ea;
+}
+header nav a{
+    font-weight: bold;
+    font-size:30px;
+    margin: -10;
+    text-decoration: none;
+    color: black;
+}
+ul{
+    position: relative;
+    float: left; right: -1090px;
+    padding: 10px;
+    display: flex;
+    gap: 50px;
+    
+}
+ul li{
+    list-style: none;
+}
+ul img{
+    width: 30px;
+}
+.contenedor-prestamos img{
+    height: 81.09vh;
+    width: 376px;
+    border-radius: 10px 0 0 0 0;
+}
+
+.contenedor-prestamos{
+    height: 89vh;
+    width: 380px;
+    text-align: center;
+    margin-top: 150px;
+    margin-left: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #8ec8ea;
+    
+    
+}
+.contenedor-img{
+    border-width: 1px;
+    border-style: solid;
+}
+
+.lista-creditos{
+    width: 879px;
+    height: 60vh;
+    margin-left: 385px;
+    margin-top: -410px;
+    background-color: #8ec8ea;
+}
+.div-libreinversion{
+    position:absolute;
+    width: 50px;
+    height: 50px;
+    margin-left: 13px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+footer{
+    margin-top: 250px;
+    height: 40vh;
+    background-color: #8ec8ea;
+}
