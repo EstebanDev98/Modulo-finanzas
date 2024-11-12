@@ -17,4 +17,5 @@ use Illuminate\Routing\RouteRegistrar;
 
 Route::get('/', [ServiceController::class,'index'])->name('inicio.index');
 Route::get('/vista_prestamos', [ServiceController::class,'ver_prestamos'])->name('vista.verprestamos');
-Route::post('/prestamos/servicio/', [ServiceController::class, 'store'])->name('servicio.store');
+Route::get('/servicio/tarjeta',[ServiceController::class,'ver_tarjetas'])->name('vista.tarjetas');
+Route::post('/servicio/prestamos', [ServiceController::class, 'store'])->name('servicio.store');

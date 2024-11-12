@@ -9,14 +9,11 @@ class ClienteServicio extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'idcliente',
-        'idservicio',
-        'idtiposervicio',
-        'monto',
-        'fecha_hora'
+        'cliente_id',
+        'servicio_id',
+        'monto'
+        
     ];
 
-    public function unir(){
-        
-    }
+    
 }

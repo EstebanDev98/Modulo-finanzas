@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
+
+use App\Models\Cliente;
+
 use App\Models\Servicio;
 use App\Models\ClienteServicio;
 use Illuminate\Contracts\View\View;
@@ -16,21 +18,41 @@ class ServiceController extends Controller
     }
     public function ver_prestamos()
     {
-        $service = Servicio::where('nombre','libre inversion')->first();
-        $tarifa = Servicio::where('tarifa_base',38000)->first();
-        return view('vista_prestamos', compact('service','tarifa'));
+        $service = Servicio::all();
+        
+        return view('vista_prestamos', compact('service'));
+    }
+
+    public function ver_tarjetas()
+    {
+        return view('vista_tarjetas');
     }
     
+
     public function store(Request $request)
     {
-        $cliente_servicio = new ClienteServicio();
-        $cliente_servicio->idcliente = $request->idcliente;
-        $cliente_servicio->idservicio = $request->idservicio;
-        $cliente_servicio->idtiposervicio = $request->idtiposervicio; 
+        $cliente_servicio = new ClienteServicio();    
         $cliente_servicio->monto = $request->monto;
-        $cliente_servicio->fecha_hora = $request->fecha_hora; 
-        return $cliente_servicio; 
+        // $cliente_servicio->plazo = $request->plazo;
+        // $cliente_servicio->cedula = $request->cedula;
+        $cliente = Cliente::find(1);
+        $cliente->servicios()->attach(2);
+        
+        
+        /*foreach($cliente->servicios as $servicio){
+            echo $servicio->pivot->cliente_id . '<br>';
+        }*/
+
+        
+        
+
+        
+        
+        // $cliente_servicio->fecha_hora = $request->fecha_hora; 
+        // return $cliente_servicio; 
 
     }
+
+
     
 }

@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Servicio extends Model
+class Cliente extends Model
 {
     use HasFactory;
     protected $filable = [
         'nombre',
-        'tipo',
-        'tarifa_base',
-        'frecuencia'
+        'email'
     ];
 
-    public function cliente(){
-        return $this->belongsToMany(Cliente::class, 'clientesservicios');
+    public function servicios(){
+        return $this->belongsTomany(Servicio::class, 'clientesservicios');
     }
 }
