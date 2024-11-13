@@ -46,7 +46,7 @@
         @foreach($cliente->clienteServicios as $clienteServicio)
             <div class="card mb-3">
                 <div class="card-header">
-                    Servicio: {{ $clienteServicio->servicio->nombre_servicio}}
+                    Servicio: {{ $clienteServicio->servicio->nombre_servicio }}
                     <span class="badge bg-primary float-end">Estado: {{ $clienteServicio->facturas->last()->estado ?? 'pendiente' }}</span>
                 </div>
                 <div class="card-body">
@@ -70,7 +70,7 @@
                                                 <p>Fecha de emisión: {{ $factura->fecha_emision }}</p>
                                                 <p>Fecha de pago: {{ $factura->fecha_pago }}</p>
                                                 <p>Estado: {{ $factura->transacciones->last()->estado ?? 'pendiente' }}</p>
-                                                <p>Valor pagado: {{ $factura->transacciones->last()->monto_pagado    ?? $clienteServicio->monto }}</p>
+                                                <p>Valor pagado: {{ $factura->transacciones->last()->monto_pagado ?? $clienteServicio->monto }}</p>
                                                 <p>Saldo pendiente: {{ $factura->transacciones->last()->saldo_pendiente ?? $clienteServicio->monto }}</p>
                                             </div>
                                         </div>
@@ -82,14 +82,12 @@
                 </div>
             </div>
         @endforeach
-
-
-     
-    
-    
-     
-
-
 </div>
 @endsection
+
+
+
+
+
+
 
