@@ -106,6 +106,15 @@
                         <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Ayuda</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                    <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -440,7 +449,10 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="{{ asset('js/welcome.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGz1Y5rAyLxKE6z7VOQOxncP+dqFvNPOo0IEd2pB7H9kx" crossorigin="anonymous"></script>
+
+
+        <script src="{{ asset('js/welcome.js') }}"></scrip>
 
 
 
