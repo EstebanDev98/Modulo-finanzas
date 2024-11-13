@@ -8,6 +8,10 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/app.css'
             ],
+
+            publicDirectory: 'public', // Asegura que el directorio público sea `public`
+            buildDirectory: 'build', // Asegura que el subdirectorio de build sea `build`
+            
             refresh: true,
         }),
     ],
