@@ -26,6 +26,8 @@ class ClienteController extends Controller
 
     }
 
+    
+
     public function cliente_detalles($id)
     {
       //  $cliente = Cliente::find($id);

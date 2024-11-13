@@ -26,8 +26,6 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 
 
-
-
 // Ruta para la página principal
 Route::get('/', [HomeController::class, 'index']);
 
@@ -62,12 +60,3 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 
 //ruta para el crud de servicios
 Route::resource('servicios', ServicioController::class);
-
-
-
-
-
-
-
-
-
