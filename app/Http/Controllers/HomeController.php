@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 class HomeController extends Controller
@@ -15,6 +18,11 @@ class HomeController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+    }
+
+    public function verPdf()
+    {
+        return view('pdf.pdf');
     }
 
     /**

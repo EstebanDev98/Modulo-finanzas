@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ServicioController;
+use App\Models\Cliente;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,12 @@ use App\Http\Controllers\ServicioController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//ruta para descargar archivos pdf
+
+
+
+
 
 // Ruta para la página principal
 Route::get('/', [HomeController::class, 'index']);
@@ -32,9 +40,16 @@ Route::post('/clientes/buscar', [ClienteController::class, 'buscar'])->name('cli
 
 Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detalles'])->name('cliente.detalles');
 
+Route::get('/cliente/{id}/pdf', function ($id) {
+    $cliente = Cliente::with(['clienteServicios.servicio', 'clienteServicios.facturas.transacciones'])->findOrFail($id);
+    $pdf = Pdf::loadView('clientes.pdf', compact('cliente'));
+    return $pdf->download('cliente_informacion.pdf');
+})->name('clientes.pdf');
+
 //Route::get('clientes', [HomeController::class, 'clientes'])->name('clientes.index');
 
 //Route::get('/cliente/detalles', [HomeController::class, 'cliente_detalles'])->name('cliente.detalles');
+
 
 // Ruta para la página de inicio después del login
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -47,5 +62,12 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 
 //ruta para el crud de servicios
 Route::resource('servicios', ServicioController::class);
+
+
+
+
+
+
+
 
 
