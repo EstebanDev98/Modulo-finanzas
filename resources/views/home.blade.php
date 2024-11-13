@@ -105,6 +105,17 @@
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Ayuda</a>
                     </li>
+                    <li class="list-group-item" style="background-color: transparent; border: none;">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+    
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
