@@ -24,7 +24,7 @@
                     <a href="#">
                         Salir
                     </a><br>
-                <!-- <a href="{{route('vista.verprestamos')}}" class="btn btn-primary" style="margin-left:45%; margin-top:40px;">consultar servicios</a> -->
+                <!-- <a href="{{route('vista.servicios')}}" class="btn btn-primary" style="margin-left:45%; margin-top:40px;">consultar servicios</a> -->
                 </div>
             </div>
              

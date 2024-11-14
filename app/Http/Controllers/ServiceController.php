@@ -8,6 +8,8 @@ use App\Models\Servicio;
 use App\Models\ClienteServicio;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Unique;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ServiceController extends Controller
 {
@@ -16,11 +18,11 @@ class ServiceController extends Controller
     {
         return view('index');
     }
-    public function ver_prestamos()
+    public function ver_servicios()
     {
         $service = Servicio::all();
         
-        return view('vista_prestamos', compact('service'));
+        return view('vista_servicios', compact('service'));
     }
 
     public function ver_tarjetas()
@@ -32,13 +34,18 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $cliente_servicio = new ClienteServicio();    
-        $cliente_servicio->monto = $request->monto;
+        
         // $cliente_servicio->plazo = $request->plazo;
         // $cliente_servicio->cedula = $request->cedula;
         $cliente = Cliente::find(1);
-        $cliente->servicios()->attach(2);
+        // $cliente->servicios()->attach(2);
+        $validated = $request->validate([
+            $cliente_servicio->cedula => 'Required|Unique|10',
+            $cliente_servicio->monto => 'Required',
+            $cliente_servicio->plazo => 'Required',
+        ]);
         
-        
+        return redirect('/vista_prestamos');
         /*foreach($cliente->servicios as $servicio){
             echo $servicio->pivot->cliente_id . '<br>';
         }*/
