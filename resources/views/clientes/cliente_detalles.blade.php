@@ -19,6 +19,7 @@
                     <p class="mb-2"><strong>Teléfono:</strong> {{ $cliente->telefono }}</p>
                     <p class="mb-2"><strong>Dirección:</strong> {{ $cliente->direccion }}</p>
                 </div>
+
             </div>
         </div>
         <!-- Lista de servicios -->

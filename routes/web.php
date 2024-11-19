@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Routing\RouteRegistrar;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Cliente;
 
 // Rutas de páginas principales
 Route::get('/', [HomeController::class, 'index']);
@@ -28,6 +30,13 @@ Route::post('/clientes/buscar', [ClienteController::class, 'buscar'])->name('cli
 Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detalles'])->name('cliente.detalles');
 
 // Ruta para descargar el PDF en PDFController
-Route::get('/cliente/{id}/download-pdf', [PDFController::class, 'downloadClientePDF'])->name('cliente.download_pdf');
+
+Route::get('/cliente/{id}/pdf', function ($id) {
+    $cliente = Cliente::with(['clienteServicios.servicio', 'clienteServicios.facturas.transacciones'])->findOrFail($id);
+    $pdf = Pdf::loadView('clientes.pdf', compact('cliente'));
+    return $pdf->stream('cliente_informacion.pdf'); // Usa stream si prefieres verlo en el navegador
+})->name('cliente.pdf');
+
+
 // Ruta para el crud de servicios
 Route::resource('servicios', ServicioController::class);

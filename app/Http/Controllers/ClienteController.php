@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class ClienteController extends Controller
 {
@@ -25,8 +27,6 @@ class ClienteController extends Controller
         }
 
     }
-
-    
 
     public function cliente_detalles($id)
     {
@@ -58,5 +58,14 @@ class ClienteController extends Controller
 
         //return view('cliente_detalles', compact('cliente'));
         
+    }
+
+    public function descargarPDF($id)
+    {
+        $cliente = Cliente::with(['clienteServicios.servicio', 'clienteServicios.facturas.transacciones'])->findOrFail($id);
+
+        $pdf = Pdf::loadView('clientes.pdf', compact('cliente'));
+
+        return $pdf->download('cliente_informacion_' . $cliente->id . '.pdf');
     }
 }
