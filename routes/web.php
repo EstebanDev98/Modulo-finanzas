@@ -29,6 +29,5 @@ Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detall
 
 // Ruta para descargar el PDF en PDFController
 Route::get('/cliente/{id}/download-pdf', [PDFController::class, 'downloadClientePDF'])->name('cliente.download_pdf');
-
 // Ruta para el crud de servicios
 Route::resource('servicios', ServicioController::class);

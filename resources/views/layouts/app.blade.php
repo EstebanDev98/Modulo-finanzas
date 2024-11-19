@@ -75,7 +75,10 @@
         <main class="py-4">
             @yield('content')
 
-            <a href="{{ route('cliente.download_pdf', ['id' => $cliente->id]) }}" class="btn btn-danger btn-sm w-auto mt-3" target="_blank">Descargar PDF</a>
+            <button type="button" href="{{ route('cliente.download_pdf', ['id' => $cliente->id]) }}" class="btn btn-primary btn-lg mt-3 ms-4" style="width: auto"  target="_blank">
+                Descargar PDF
+            </button>
+
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
