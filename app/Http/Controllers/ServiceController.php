@@ -20,9 +20,9 @@ class ServiceController extends Controller
     }
     public function ver_servicios()
     {
-        $service = Servicio::all();
+        $servicio = Servicio::all();
         
-        return view('vista_servicios', compact('service'));
+        return view('vista_servicios', compact('servicio'));
     }
 
     
@@ -42,7 +42,7 @@ class ServiceController extends Controller
             $cliente_servicio->plazo => 'Required',
         ]);
         
-        return redirect('/vista_prestamos');
+        return redirect('/vista_servicios');
         /*foreach($cliente->servicios as $servicio){
             echo $servicio->pivot->cliente_id . '<br>';
         }*/

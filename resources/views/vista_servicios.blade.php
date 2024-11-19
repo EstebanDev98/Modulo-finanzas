@@ -6,19 +6,18 @@
       <section class="secc-libinversion">
         <h3 style="text-align: center;">Nuestros Servicios</h3>
         <div class="contenedor_tarjetas">
-          @foreach ($service as $servicio )
+          @foreach ($servicio as $servicios)
           <div class="card">
             <div class="card-header">
-            <p style="text-align: center;">{{$servicio->nombre ?? ''}} </p>
+            <p style="text-align: center;">{{$servicios->nombre_servicio ?? ''}} </p>
             </div>
             <div class="card-body">
-                <p> Tipo: {{$servicio->tipo ?? ''}}</p>
-                <p class="precio">Tarifa base: $ {{$servicio->tarifa_base ?? ''}}</p>
-                <a href="#" id="abrirModal" class="btn btn-primary">solicitar</a>
+                <p> Descripcion: {{$servicios->descripcion ?? ''}}</p>
             </div>
           </div>
           @endforeach
         </div>
+        <a href="#" id="abrirModal" class="btn btn-primary">solicitar</a>
          
       </section>
 
@@ -33,18 +32,32 @@
               <!-- Formulario del modal -->
               <form action="{{route('servicio.store')}}" method="post">
                 @csrf
+
+                <div class="">
+                  <label for="labelCedula">Servicio</label>
+                  <select class="form-control" name="select-servicio">
+                    <option>--</option>
+
+                    @foreach ($servicio as $servicios )
+
+                      <option>{{$servicios->servicio_id}} - {{$servicios->nombre_servicio}}</option>
+
+                    @endforeach
+                  </select>
+                </div>
+
                 <div class="">
                   <label for="labelCedula">Cedula</label>
                   <input type="text" class="form-control" id="labelCedula" aria-describedby="" name="cedula"> 
                 </div>
-                <div class="">
+                <!--<div class="">
                   <label for="labelMonto">Ingrese el monto</label>
                   <input type="text" class="form-control" id="labelMonto" aria-describedby="" placeholder="$" name="monto" > 
-                </div>
-                <div>
+                </div>-->
+                <!--<div>
                   <label for="labelPlazo">Plazo</label>
                   <input type="text" class="form-control" id="labelPlazo" aria-describedby="" placeholder="48 meses" name="plazo" >
-                </div>
+                </div>-->
                 <!--<div>
                   <label for="labelCedula">Ingese su identificacion</label>
                   <input type="text" class="form-control" id="labelCedula" aria-describedby="" placeholder="C.c" name="cedula" >

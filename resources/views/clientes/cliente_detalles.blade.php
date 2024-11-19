@@ -41,51 +41,47 @@
         <!-- Lista de facturas -->
         <h3>Facturas</h3>
         @foreach($cliente->clienteServicios as $clienteServicio)
-            <div class="card mb-3">
-                <div class="card-header">
-                    Servicio: {{ $clienteServicio->servicio->nombre_servicio }}
-                    <span class="badge bg-primary float-end">Estado: {{ $clienteServicio->facturas->last()->estado ?? 'pendiente' }}</span>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Monto: {{ $clienteServicio->monto }}</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFactura{{ $clienteServicio->id }}">
-                        Ver detalles de facturas
-                    </button>
-
-                    <!-- Modal para facturas -->
-                    <div class="modal fade" id="modalFactura{{ $clienteServicio->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Detalles de Facturas</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Detalles de Facturas</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    @foreach($clienteServicio->facturas as $factura)
-                                        <div class="card mb-2">
-                                            <div class="card-body">
-                                                <p>Fecha de emisión: {{ $factura->fecha_emision }}</p>
-                                                <p>Fecha de pago: {{ $factura->fecha_pago }}</p>
-                                                <p>Estado: {{ $factura->transacciones->last()->estado ?? 'pendiente' }}</p>
-                                                <p>Valor pagado: {{ $factura->transacciones->last()->monto_pagado ?? $clienteServicio->monto }}</p>
-                                                <p>Saldo pendiente: {{ $factura->transacciones->last()->saldo_pendiente ?? $clienteServicio->monto }}</p>
-                                            </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                Servicio: {{ $clienteServicio->servicio->nombre_servicio }}
+                <span class="badge bg-primary float-end">Estado: {{ $clienteServicio->facturas->last()->estado ?? 'pendiente' }}</span>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Monto: {{ $clienteServicio->monto }}</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFactura{{ $clienteServicio->id }}">
+                    Ver detalles de facturas
+                </button>
+    
+                <!-- Modal -->
+                <div class="modal fade" id="modalFactura{{ $clienteServicio->id }}" tabindex="-1" aria-labelledby="modalFacturaLabel{{ $clienteServicio->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalFacturaLabel{{ $clienteServicio->id }}">Detalles de Facturas</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                @foreach($clienteServicio->facturas as $factura)
+                                    <div class="card mb-2">
+                                        <div class="card-body">
+                                            <p>Fecha de emisión: {{ $factura->fecha_emision }}</p>
+                                            <p>Fecha de pago: {{ $factura->fecha_pago }}</p>
+                                            <p>Estado: {{ $factura->transacciones->last()->estado ?? 'pendiente' }}</p>
+                                            <p>Valor pagado: {{ $factura->transacciones->last()->monto_pagado ?? $clienteServicio->monto }}</p>
+                                            <p>Saldo pendiente: {{ $factura->transacciones->last()->saldo_pendiente ?? $clienteServicio->monto }}</p>
                                         </div>
-                                    @endforeach
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        </div>
+    </div>
 </div>
-@endsection
-
+@endforeach
+    
 
 
 
