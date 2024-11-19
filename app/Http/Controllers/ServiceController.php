@@ -25,10 +25,7 @@ class ServiceController extends Controller
         return view('vista_servicios', compact('service'));
     }
 
-    public function ver_tarjetas()
-    {
-        return view('vista_tarjetas');
-    }
+    
     
 
     public function store(Request $request)

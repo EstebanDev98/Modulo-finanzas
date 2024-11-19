@@ -50,7 +50,7 @@ class ServicioController extends Controller
     {
         $servicio = Servicio::find($id);
 
-        return view('servicio.show', compact('servicio'));
+        return view('show.blade', compact('servicio'));
     }
 
     /**

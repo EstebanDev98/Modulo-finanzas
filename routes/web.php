@@ -27,8 +27,10 @@ Route::get('/clientes/buscar', [ClienteController::class, 'formulario'])->name('
 Route::post('/clientes/buscar', [ClienteController::class, 'buscar'])->name('cliente.buscar.post');
 Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detalles'])->name('cliente.detalles');
 
+
 // Ruta para descargar el PDF en PDFController
 Route::get('/cliente/{id}/download-pdf', [PDFController::class, 'downloadClientePDF'])->name('cliente.download_pdf');
 
 // Ruta para el crud de servicios
-Route::resource('servicios', ServicioController::class);
+Route::resource('servicios', 'destroy');
+
