@@ -1,0 +1,53 @@
+/* Estilos globales */
+*{
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body, html{
+    height: 100vh;
+    background-color: #afdeff;
+}
+
+.navbar{
+    background-color: white;
+    height: 4rem;
+}
+
+.nav-title{
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #007AFF;
+    margin-left: 2rem;
+    font-family: "Dm sans";
+}
+
+.footer{
+    background-color: #3999dd;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.footer p{
+    margin: 0;
+}
+
+.icons{
+    cursor: pointer;
+}
+
+.foot-text{
+    font-weight: bold;
+    font-family: "Dm sans";
+}
+
+.saludo{
+    background-color: #007AFF;
+}

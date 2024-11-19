@@ -1,21 +1,34 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ServicioController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Routing\RouteRegistrar;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Rutas de páginas principales
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', [ServiceController::class,'index'])->name('inicio.index');
-Route::get('/vista_prestamos', [ServiceController::class,'ver_servicios'])->name('vista.servicios');
-Route::get('/servicio/tarjeta',[ServiceController::class,'ver_tarjetas'])->name('vista.tarjetas');
-Route::post('/servicio/prestamos', [ServiceController::class, 'store'])->name('servicio.store');
+// Rutas de autenticación
+Auth::routes();
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+
+// Ruta para la página de inicio después del login
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+// Rutas de clientes
+Route::get('/clientes/buscar', [ClienteController::class, 'formulario'])->name('cliente.formulario');
+Route::post('/clientes/buscar', [ClienteController::class, 'buscar'])->name('cliente.buscar.post');
+Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detalles'])->name('cliente.detalles');
+
+// Ruta para descargar el PDF en PDFController
+Route::get('/cliente/{id}/download-pdf', [PDFController::class, 'downloadClientePDF'])->name('cliente.download_pdf');
+
+// Ruta para el crud de servicios
+Route::resource('servicios', ServicioController::class);
