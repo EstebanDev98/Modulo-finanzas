@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
+
+/*
  * Class Servicio
  *
  * @property $id
@@ -13,14 +14,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property ClienteServicio[] $clienteServicios
- * @package App
- * @mixin \Illuminate\Database\Eloquent\Builder
+//  * @property ClienteServicios[] $clienteServicios
+//  * @package App
+//  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class Servicio extends Model
 {
     
-    protected $perPage = 20;
+    // protected $perPage = 20;
 
     /**
      * The attributes that are mass assignable.
@@ -30,12 +31,18 @@ class Servicio extends Model
     protected $fillable = ['nombre_servicio', 'descripcion'];
 
 
-    /**
+    /*
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function clienteServicios()
+    
+
+    /*public function clienteServicios()
     {
-        return $this->hasMany(\App\Models\ClienteServicio::class, 'id', 'servicios_id');
+        return $this->hasMany(\App\Models\ClienteServicios::class, 'id', 'servicios_id');
+    }*/
+
+    public function clientes(){
+        return $this->belongsToMany(Cliente::class, 'cliente_servicios', 'idservicio', 'idcliente');
     }
     
 }

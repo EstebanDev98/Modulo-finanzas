@@ -27,6 +27,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                @isset($cliente)
+                    <a href="{{ route('cliente.pdf', ['id' => $cliente->id]) }}" class="btn btn-danger btn-sm mt-3" target="_blank">
+                        Descargar PDF
+                    </a>
+                @endisset
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -75,9 +81,6 @@
         <main class="py-4">
             @yield('content')
 
-            <button type="button" href="{{ route('cliente.download_pdf', ['id' => $cliente->id]) }}" class="btn btn-primary btn-lg mt-3 ms-4" style="width: auto"  target="_blank">
-                Descargar PDF
-            </button>
 
         </main>
     </div>

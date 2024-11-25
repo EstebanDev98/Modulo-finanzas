@@ -48,9 +48,9 @@ class ServicioController extends Controller
      */
     public function show($id): View
     {
-        $servicio = Servicio::find($id);
+        $servicio = Servicio::findOrFail($id);
 
-        return view('show.blade', compact('servicio'));
+        return view('servicio.show', compact('servicio'));
     }
 
     /**

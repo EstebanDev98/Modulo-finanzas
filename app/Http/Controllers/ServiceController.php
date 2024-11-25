@@ -6,9 +6,12 @@ use App\Models\Cliente;
 
 use App\Models\Servicio;
 use App\Models\ClienteServicio;
+use App\Models\ClienteServicios;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Unique;
+use Illuminate\Support\Facades\Redirect;
+
 use Symfony\Contracts\Service\Attribute\Required;
 
 class ServiceController extends Controller
@@ -28,24 +31,19 @@ class ServiceController extends Controller
     
     
 
-    public function store(Request $request)
+    public function store(Request $request, $idservicio)
     {
-        $cliente_servicio = new ClienteServicio();    
         
-        // $cliente_servicio->plazo = $request->plazo;
-        // $cliente_servicio->cedula = $request->cedula;
-        $cliente = Cliente::find(1);
-        // $cliente->servicios()->attach(2);
-        $validated = $request->validate([
-            $cliente_servicio->cedula => 'Required|Unique|10',
-            $cliente_servicio->monto => 'Required',
-            $cliente_servicio->plazo => 'Required',
-        ]);
+        $cliente = Cliente::findOrFail(2);
+        $servicio = Servicio::findOrFail($idservicio);
         
-        return redirect('/vista_servicios');
-        /*foreach($cliente->servicios as $servicio){
-            echo $servicio->pivot->cliente_id . '<br>';
-        }*/
+        $datos = ['monto' => $request->monto];
+
+        $cliente->servicios()->attach($idservicio, $datos);
+        
+        
+        return Redirect::route('ver.servicios')->with('success', 'Servicio adquirido exitosamente');
+        
 
         
         

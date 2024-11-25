@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('cliente_servicios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('clientes_id')
-                  ->constrained('clientes')
-                  ->onDelete('cascade');
-            $table->foreignId('servicios_id')
-                  ->constrained('servicios')
-                  ->onDelete('cascade');
+            $table->unsignedBigInteger('idcliente');
+            $table->unsignedBigInteger('idservicio');
             $table->decimal('monto', 10,2);
+
+            $table->foreign('idcliente')->references('id')->on('clientes');
+            $table->foreign('idservicio')->references('id')->on('servicios');
             $table->timestamps();
         });
     }

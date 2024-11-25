@@ -1,8 +1,15 @@
 @extends('layouts.plantilla')
-      
 
   <!-- inicio seccion libre inversion -->
+  @if ($message = Session::get('success'))
+     <div class="alert alert-success m-4">
+        <p>{{ $message }}</p>
+      </div>
+  @endif
+
+
       @section('contenido')
+    
       <section class="secc-libinversion">
         <h3 style="text-align: center;">Nuestros Servicios</h3>
         <div class="contenedor_tarjetas">
@@ -17,8 +24,9 @@
           </div>
           @endforeach
         </div>
-        <a href="#" id="abrirModal" class="btn btn-primary">solicitar</a>
-         
+        <div style="padding-left:580px;">
+          <a id="abrirModal" class="btn btn-primary">solicitar</a>
+        </div> 
       </section>
 
       <div class="modal" id="miModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
@@ -30,17 +38,17 @@
             </div>
             <div class="modal-body">
               <!-- Formulario del modal -->
-              <form action="{{route('servicio.store')}}" method="post">
+              <form action="{{route('servicio.store',$servicios->id)}}" method="post">
                 @csrf
 
                 <div class="">
                   <label for="labelCedula">Servicio</label>
-                  <select class="form-control" name="select-servicio">
+                  <select class="form-control" name="select_servicio">
                     <option>--</option>
 
                     @foreach ($servicio as $servicios )
 
-                      <option>{{$servicios->servicio_id}} - {{$servicios->nombre_servicio}}</option>
+                      <option>{{$servicios->id}}</option>
 
                     @endforeach
                   </select>
@@ -50,10 +58,10 @@
                   <label for="labelCedula">Cedula</label>
                   <input type="text" class="form-control" id="labelCedula" aria-describedby="" name="cedula"> 
                 </div>
-                <!--<div class="">
+                <div class="">
                   <label for="labelMonto">Ingrese el monto</label>
                   <input type="text" class="form-control" id="labelMonto" aria-describedby="" placeholder="$" name="monto" > 
-                </div>-->
+                </div>
                 <!--<div>
                   <label for="labelPlazo">Plazo</label>
                   <input type="text" class="form-control" id="labelPlazo" aria-describedby="" placeholder="48 meses" name="plazo" >
@@ -97,8 +105,9 @@
         });
       </script>
       <!-- Fin del script para activar el modal -->
+       @endsection
 
-      @endsection
+      
       
       
     

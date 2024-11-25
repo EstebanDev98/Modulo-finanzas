@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Routing\RouteRegistrar;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Cliente;
 
 // Rutas de páginas principales
 Route::get('/', [HomeController::class, 'index']);
 
 // Rutas de autenticación
 Auth::routes();
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'showLoginForm'])->name('login.ruta');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 // Ruta para la página de inicio después del login
@@ -29,11 +31,28 @@ Route::get('/clientes/detalles/{id}', [ClienteController::class, 'cliente_detall
 
 
 // Ruta para descargar el PDF en PDFController
-Route::get('/cliente/{id}/download-pdf', [PDFController::class, 'downloadClientePDF'])->name('cliente.download_pdf');
+
+Route::get('/cliente/{id}/pdf', function ($id) {
+    $cliente = Cliente::with(['clienteServicios.servicio', 'clienteServicios.facturas.transacciones'])->findOrFail($id);
+    $pdf = Pdf::loadView('clientes.pdf', compact('cliente'));
+    return $pdf->stream('cliente_informacion.pdf'); // Usa stream si prefieres verlo en el navegador
+})->name('cliente.pdf');
+
+
 // Ruta para el crud de servicios
-Route::resource('servicios', 'destroy');
+Route::get('servicios', [ServicioController::class, 'index'])->name('servicios.index');
+Route::get('servicios/crear', [ServicioController::class, 'create'])->name('servicios.create');
+Route::get('servicios/destroy/{id}', [ServicioController::class, 'destroy'])->name('servicios.destroy');
+Route::get('servicios/mostrar/{id}', [ServicioController::class, 'show'])->name('servicios.show');
+Route::get('servicios/editar/{id}', [ServicioController::class, 'edit'])->name('servicios.edit');
+Route::patch('servicios/actualizar', [ServicioController::class, 'update'])->name('servicios.update');
+Route::post('servicios/almacenar', [ServicioController::class, 'store'])->name('servicios.store');
+
+
+
+
 // Ruta de luis para ver los servicios
-Route::get('/vista_servicios', [ServiceController::class, 'ver_servicios']);
-Route::post('/vista_servicios/formulario', [ServiceController::class, 'store'])->name('servicio.store');
+Route::get('/vista_servicios', [ServiceController::class, 'ver_servicios'])->name('ver.servicios');
+Route::post('/solicitar_servicio/{id}', [ServiceController::class, 'store'])->name('servicio.store');
 
 

@@ -18,7 +18,7 @@ return new class extends Migration
                   ->onDelete('cascade');
             $table->string('cantidad');
             $table->string('precio_unitario');
-            $table->string('total', 10,2);
+            $table->string('total', 10);
             $table->timestamps();
         });
     }

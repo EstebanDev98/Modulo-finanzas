@@ -14,23 +14,23 @@ class ClienteServicios extends Model
     protected $table = 'cliente_servicios';
 
     protected $fillable = [
-        'clientes_id',
-        'servicios_id',
+        'idcliente',
+        'idservicio',
         'monto',
     ];
 
-    public function cliente()
+    /*public function cliente()
     {
-        return $this->belongsTo(Cliente::class, 'clientes_id');
+        return $this->belongsTo(Cliente::class, 'idcliente');
     }
 
     public function servicio()
     {
-        return $this->belongsTo(Servicio::class, 'servicios_id');
+        return $this->belongsTo(Servicio::class, 'idservicio');
     }
 
     public function facturas()
     {
         return $this->hasMany(Factura::class, 'Cservicios_id');
-    }
+    }*/
 }

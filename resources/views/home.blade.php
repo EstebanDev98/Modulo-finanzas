@@ -94,7 +94,7 @@
             <div class="collapse collapse-content" id="collapseActions" style="border-radius: 8px; background-color: #080808;">
                 <ul class="list-group">
                     <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a href="{{ route('login') }} " style="color: rgb(252, 255, 255); text-decoration: none;">Iniciar sesión</a>
+                        <a href="{{ route('login.ruta') }} " style="color: rgb(252, 255, 255); text-decoration: none;">Iniciar sesión</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a href="#" style="color: rgb(252, 255, 255); text-decoration: none;">Registrarse</a>
@@ -104,15 +104,6 @@
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Ayuda</a>
-                    </li>
-                    <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -140,7 +131,7 @@
                             </h1>
                             <p class="lead fw-normal text-white-50 mb-4">Estamos comprometidos con tu crecimiento financiero y queremos darte la mano para que cumplas tus metas!</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href=" {{ route('login') }} ">Iniciar Sesion</a>
+                                <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href=" {{ route('login.ruta') }} ">Iniciar Sesion</a>
                                 <a class="btn btn-outline-light btn-lg px-5 " href=" {{ route('register') }}">Registrarme</a>
                             </div>
                         </div>
@@ -452,7 +443,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGz1Y5rAyLxKE6z7VOQOxncP+dqFvNPOo0IEd2pB7H9kx" crossorigin="anonymous"></script>
 
 
-        <script src="{{ asset('js/welcome.js') }}"></scrip>
+        <script src="{{ asset('js/welcome.js') }}"></script>
 
 
 
@@ -461,7 +452,7 @@
               duration: 1200, // Duración de la animación en milisegundos
               once: false // Para que se ejecute tanto al bajar como al subir
             });
-          </script>
+        </script>
 </body>
 </html>
     

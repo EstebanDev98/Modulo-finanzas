@@ -51,7 +51,7 @@
 										<td >{{ $servicio->descripcion }}</td>
 
                                             <td>
-                                                <form action="{{ route('servicios.destroy', $servicio->id) }}" method="POST">
+                                                <form action="{{ route('servicios.destroy', $servicio->id) }}" >
                                                     <a class="btn btn-sm btn-primary " href="{{ route('servicios.show', $servicio->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('servicios.edit', $servicio->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf

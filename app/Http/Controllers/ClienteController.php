@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClienteServicio;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Servicio;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class ClienteController extends Controller
 {
@@ -25,8 +29,6 @@ class ClienteController extends Controller
         }
 
     }
-
-    
 
     public function cliente_detalles($id)
     {
@@ -58,5 +60,26 @@ class ClienteController extends Controller
 
         //return view('cliente_detalles', compact('cliente'));
         
+    }
+
+    public function adquirir_servicio(Request $request, $id){
+        
+        $cliente = Cliente::findOrFail($id);
+
+        $servicios_id = $request->input('select_servicio');
+        if(! Servicio::find($servicios_id)){
+            return response()->json(['error' => 'el servicio no existe'], 404);
+        }
+        $cliente->clienteServicios()->attach($servicios_id);
+        return response()->json(['sucess' => 'Servicio adquirido correctamente']);
+    }
+
+    public function descargarPDF($id)
+    {
+        $cliente = Cliente::with(['clienteServicios.servicio', 'clienteServicios.facturas.transacciones'])->findOrFail($id);
+
+        $pdf = Pdf::loadView('clientes.pdf', compact('cliente'));
+
+        return $pdf->download('cliente_informacion_' . $cliente->id . '.pdf');
     }
 }

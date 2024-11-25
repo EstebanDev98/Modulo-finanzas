@@ -40,13 +40,17 @@ class Cliente extends Authenticatable
     ];
 
 
-    public function clienteServicios()
-    {
-        return $this->hasMany(ClienteServicios::class, 'clientes_id');
-    }
+    public function servicios(){
+        return $this->belongsToMany(Servicio::class, 'cliente_servicios', 'idcliente', 'idservicio');
+    } 
 
-    public function facturas()
+    /*public function clienteServicios()
     {
-        return $this->hasManyThrough(Factura::class, ClienteServicios::class, 'clientes_id', 'Cservicios_id');
-    }
+        return $this->hasMany(ClienteServicios::class, 'idcliente');
+    }*/
+
+    /*public function facturas()
+    {
+        return $this->hasManyThrough(Factura::class, ClienteServicios::class, 'idcliente', 'Cservicios_id');
+    }*/
 }
