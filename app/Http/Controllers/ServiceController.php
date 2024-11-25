@@ -37,7 +37,11 @@ class ServiceController extends Controller
         $cliente = Cliente::findOrFail(2);
         $servicio = Servicio::findOrFail($idservicio);
         
-        $datos = ['monto' => $request->monto];
+        $datos = $request->validate([
+            'select_servicio' => 'required',
+            'cedula' => 'required|numeric|unique:clientes|integer|between:6,8',
+            'monto' => 'required|numeric'
+        ]);
 
         $cliente->servicios()->attach($idservicio, $datos);
         

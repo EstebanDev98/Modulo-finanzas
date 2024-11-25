@@ -77,6 +77,6 @@ class RegisterController extends Controller
             'identificacion' => $data['identificacion'],
             'telefono' => $data['telefono'],
             'direccion' => $data['direccion'],
-        ]);
+        ])->assignRole('cliente');
     }
 }

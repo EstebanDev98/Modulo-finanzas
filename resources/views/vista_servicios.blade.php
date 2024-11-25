@@ -1,11 +1,15 @@
 @extends('layouts.plantilla')
 
-  <!-- inicio seccion libre inversion -->
+  
+<!-- inicio seccion libre inversion -->
+<div class="">
   @if ($message = Session::get('success'))
-     <div class="alert alert-success m-4">
-        <p>{{ $message }}</p>
-      </div>
-  @endif
+      <div class="alert alert-success m-4">
+          <p>{{ $message }}</p>
+        </div>
+    @endif
+</div>
+
 
 
       @section('contenido')
@@ -45,10 +49,14 @@
                   <label for="labelCedula">Servicio</label>
                   <select class="form-control" name="select_servicio">
                     <option>--</option>
+                    @if ($errors->has('select_servicio'))
+                      <div class="alert alert-dager">{{$errors->first('select_servicio')}}</div>
+                    
+                    @endif
 
                     @foreach ($servicio as $servicios )
 
-                      <option>{{$servicios->id}}</option>
+                      <option>{{$servicios->id}}- {{$servicios->nombre_servicio}}</option>
 
                     @endforeach
                   </select>
