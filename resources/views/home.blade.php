@@ -132,7 +132,7 @@
                             <p class="lead fw-normal text-white-50 mb-4">Estamos comprometidos con tu crecimiento financiero y queremos darte la mano para que cumplas tus metas!</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href=" {{ route('login.ruta') }} ">Iniciar Sesion</a>
-                                <a class="btn btn-outline-light btn-lg px-5 " href=" {{ route('register') }}">Registrarme</a>
+                                <a class="btn btn-outline-light btn-lg px-5" href=" {{ route('register') }} ">Registrarme</a>
                             </div>
                         </div>
                     </div>
