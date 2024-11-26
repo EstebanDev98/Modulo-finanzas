@@ -73,7 +73,7 @@
                         </li>
                         <li class="nav-item me-3">
                             <div class="d-flex align-items-center">
-                                <span><a class="nav-link" href="#"><i class="fas fa-chart-line me-2"></i>Empresa</a></span>
+                                <span><a class="nav-link" href="#"><i class="fas fa-chart-line me-2"></i>Admin</a></span>
                             </div>
                         </li>
                         <li class="nav-item me-3">
@@ -97,10 +97,10 @@
                         <a href="{{ route('login.ruta') }} " style="color: rgb(252, 255, 255); text-decoration: none;">Iniciar sesión</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a href="#" style="color: rgb(252, 255, 255); text-decoration: none;">Registrarse</a>
+                        <a href="{{route('register')}}" style="color: rgb(252, 255, 255); text-decoration: none;">Registrarse</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Recuperar contraseña</a>
+                        <a href="{{route('password.request')}}" style="color: rgb(255, 255, 255); text-decoration: none;">Recuperar contraseña</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Ayuda</a>
@@ -132,7 +132,7 @@
                             <p class="lead fw-normal text-white-50 mb-4">Estamos comprometidos con tu crecimiento financiero y queremos darte la mano para que cumplas tus metas!</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href=" {{ route('login.ruta') }} ">Iniciar Sesion</a>
-                                <a class="btn btn-outline-light btn-lg px-5 " href=" {{ route('register') }}">Registrarme</a>
+                                <a class="btn btn-outline-light btn-lg px-5" href=" {{ route('register') }} ">Registrarme</a>
                             </div>
                         </div>
                     </div>
