@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Servicio;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ServicioRequest;
@@ -11,6 +12,16 @@ use Illuminate\View\View;
 
 class ServicioController extends Controller
 {
+
+    public function __construct(){
+        $this->Middleware('can:servicios.index')->only('index');
+        $this->Middleware('can:servicios.create')->only('create');
+        $this->Middleware('can:servicios.destroy')->only('destroy');
+        $this->Middleware('can:servicios.show')->only('show');
+        $this->Middleware('can:servicios.edit')->only('edit');
+        $this->Middleware('can:servicios.update')->only('update');
+    }
+
     /**
      * Display a listing of the resource.
      */
