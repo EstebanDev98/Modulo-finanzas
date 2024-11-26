@@ -19,34 +19,35 @@ class ServiceController extends Controller
     //
     public function index(): View
     {
-        return view('index');
+        $cliente = Cliente::findOrFail(2);
+        return view('index', compact('cliente'));
     }
-    public function ver_servicios()
+    public function ver_servicios($idcliente)
     {
         $servicio = Servicio::all();
+        $cliente = Cliente::findOrFail($idcliente);
         
-        return view('vista_servicios', compact('servicio'));
+        return view('vista_servicios', compact('servicio','cliente'));
     }
 
     
     
 
-    public function store(Request $request, $idservicio)
+    public function store(Request $request, $idcliente)
     {
-        
-        $cliente = Cliente::findOrFail(2);
-        $servicio = Servicio::findOrFail($idservicio);
-        
+         
         $datos = $request->validate([
-            'select_servicio' => 'required',
+            'select_servicio' => 'required|exists:servicios,id',
             'cedula' => 'required|numeric|unique:clientes|integer|between:6,8',
-            'monto' => 'required|numeric'
+            'monto' => 'required|numeric|min:0',
         ]);
+        $cliente = Cliente::findOrFail($idcliente);
+        $idservicio = $datos['select_servicio'];
 
         $cliente->servicios()->attach($idservicio, $datos);
         
         
-        return Redirect::route('ver.servicios')->with('success', 'Servicio adquirido exitosamente');
+        return Redirect::route('ver.servicios', compact($cliente))->with('success', 'Servicio adquirido exitosamente');
         
 
         

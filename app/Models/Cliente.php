@@ -44,13 +44,13 @@ class Cliente extends Authenticatable
         return $this->belongsToMany(Servicio::class, 'cliente_servicios', 'idcliente', 'idservicio');
     } 
 
-    /*public function clienteServicios()
+    public function clienteServicios()
     {
         return $this->hasMany(ClienteServicios::class, 'idcliente');
-    }*/
+    }
 
-    /*public function facturas()
+    public function facturas()
     {
         return $this->hasManyThrough(Factura::class, ClienteServicios::class, 'idcliente', 'Cservicios_id');
-    }*/
+    }
 }

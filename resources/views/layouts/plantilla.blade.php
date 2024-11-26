@@ -20,11 +20,12 @@
             </div>
 
             <div class="offcanvas-body">
-                <div class="item1">
-                    <a href="#">
-                        Salir
-                    </a><br>
-                </div>
+                <li class="item1">
+                    
+                </li>
+                <li class="item2">
+                    <a href="#">Salir</a>
+                </li>
             </div>
              
         </div>

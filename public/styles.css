@@ -89,7 +89,24 @@ main{
 
 .item1 a{
     text-decoration: none;
+    color: black;
 }
+.item2 a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    list-style: none;
+}
+.contenedor-img{
+    position: relative;
+    margin:50px 50px 0 50px;
+}
+.div-imagen img{
+    height: 70vh;
+}
+
+
 footer{
     position: absolute;
     margin-top: 500px;
