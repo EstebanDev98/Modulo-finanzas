@@ -19,7 +19,7 @@ class ClienteServicios extends Model
         'monto',
     ];
 
-    /*public function cliente()
+    public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'idcliente');
     }
@@ -32,5 +32,5 @@ class ClienteServicios extends Model
     public function facturas()
     {
         return $this->hasMany(Factura::class, 'Cservicios_id');
-    }*/
+    }
 }
