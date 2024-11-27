@@ -36,10 +36,10 @@ class Servicio extends Model
      */
     
 
-    /*public function clienteServicios()
+    public function clienteServicios()
     {
         return $this->hasMany(\App\Models\ClienteServicios::class, 'id', 'servicios_id');
-    }*/
+    }
 
     public function clientes(){
         return $this->belongsToMany(Cliente::class, 'cliente_servicios', 'idservicio', 'idcliente');

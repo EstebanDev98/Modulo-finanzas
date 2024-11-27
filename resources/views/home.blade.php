@@ -73,7 +73,7 @@
                         </li>
                         <li class="nav-item me-3">
                             <div class="d-flex align-items-center">
-                                <span><a class="nav-link" href="#"><i class="fas fa-chart-line me-2"></i>Empresa</a></span>
+                                <span><a class="nav-link" href="#"><i class="fas fa-chart-line me-2"></i>Admin</a></span>
                             </div>
                         </li>
                         <li class="nav-item me-3">
@@ -97,10 +97,10 @@
                         <a href="{{ route('login.ruta') }} " style="color: rgb(252, 255, 255); text-decoration: none;">Iniciar sesión</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a href="#" style="color: rgb(252, 255, 255); text-decoration: none;">Registrarse</a>
+                        <a href="{{route('register')}}" style="color: rgb(252, 255, 255); text-decoration: none;">Registrarse</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
-                        <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Recuperar contraseña</a>
+                        <a href="{{route('password.request')}}" style="color: rgb(255, 255, 255); text-decoration: none;">Recuperar contraseña</a>
                     </li>
                     <li class="list-group-item" style="background-color: transparent; border: none;">
                         <a href="#" style="color: rgb(255, 255, 255); text-decoration: none;">Ayuda</a>

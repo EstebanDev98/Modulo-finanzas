@@ -31,7 +31,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth.login');
     }
 
     /**
@@ -78,5 +78,6 @@ class RegisterController extends Controller
             'telefono' => $data['telefono'],
             'direccion' => $data['direccion'],
         ])->assignRole('cliente');
+    
     }
 }

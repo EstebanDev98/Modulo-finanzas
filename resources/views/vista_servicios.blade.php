@@ -30,6 +30,7 @@
         </div>
         <div style="padding-left:580px;">
           <a id="abrirModal" class="btn btn-primary">solicitar</a>
+          <a class="btn btn-primary" href="{{route('cliente.pdf',$cliente->id)}}">Mis facturas</a>
         </div> 
       </section>
 
@@ -42,23 +43,21 @@
             </div>
             <div class="modal-body">
               <!-- Formulario del modal -->
-              <form action="{{route('servicio.store',$servicios->id)}}" method="post">
+              <form action="{{route('servicio.store',$cliente->id)}}" method="post">
                 @csrf
 
                 <div class="">
                   <label for="labelCedula">Servicio</label>
                   <select class="form-control" name="select_servicio">
                     <option>--</option>
-                    @if ($errors->has('select_servicio'))
-                      <div class="alert alert-dager">{{$errors->first('select_servicio')}}</div>
-                    
-                    @endif
-
                     @foreach ($servicio as $servicios )
 
-                      <option>{{$servicios->id}}- {{$servicios->nombre_servicio}}</option>
+                      <option value="{{$servicios->id}}">{{$servicios->nombre_servicio}}</option>
 
                     @endforeach
+                    @if ($errors->has('select_servicio'))
+                      <div class="alert alert-dager">{{$errors->first('select_servicio')}}</div>
+                    @endif
                   </select>
                 </div>
 

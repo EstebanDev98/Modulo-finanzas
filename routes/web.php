@@ -14,7 +14,9 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Cliente;
 
 // Rutas de páginas principales
-Route::get('/', [HomeController::class, 'index']);
+  Route::get('/', [HomeController::class, 'index']);
+  Route::get('/inicio', [ServiceController::class, 'index']);
+
 
 // Rutas de autenticación
 Auth::routes();
@@ -52,7 +54,7 @@ Route::post('servicios/almacenar', [ServicioController::class, 'store'])->name('
 
 
 // Ruta de luis para ver los servicios
-Route::get('/vista_servicios', [ServiceController::class, 'ver_servicios'])->name('ver.servicios');
+Route::get('/vista_servicios/{id}', [ServiceController::class, 'ver_servicios'])->name('ver.servicios');
 Route::post('/solicitar_servicio/{id}', [ServiceController::class, 'store'])->name('servicio.store');
 
 
