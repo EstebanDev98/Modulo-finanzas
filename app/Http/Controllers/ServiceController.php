@@ -33,10 +33,10 @@ class ServiceController extends Controller
     
     
 
-    public function store(Request $request, $idcliente)
+    public function store(Request $request, $idcliente, $idservicio)
     {
         
-        $cliente = Cliente::findOrFail($idservicio);
+        $cliente = Cliente::findOrFail($idcliente);
         $servicio = Servicio::findOrFail($idservicio);
         
         $datos = $request->validate([
