@@ -26,19 +26,19 @@ class ServiceController extends Controller
     {
         $servicio = Servicio::all();
         $cliente = Cliente::findOrFail($idcliente);
-        
+
         return view('vista_servicios', compact('servicio','cliente'));
     }
 
-    
-    
+
+
 
     public function store(Request $request, $idcliente, $idservicio)
     {
-        
+
         $cliente = Cliente::findOrFail($idcliente);
         $servicio = Servicio::findOrFail($idservicio);
-        
+
         $datos = $request->validate([
             'select_servicio' => 'required|exists:servicios,id',
             'cedula' => 'required|numeric|unique:clientes|integer|between:6,8',
@@ -48,21 +48,21 @@ class ServiceController extends Controller
         $idservicio = $datos['select_servicio'];
 
         $cliente->servicios()->attach($idservicio, $datos);
-        
-        
+
+
         return Redirect::route('ver.servicios', compact($cliente))->with('success', 'Servicio adquirido exitosamente');
-        
 
-        
-        
 
-        
-        
-        // $cliente_servicio->fecha_hora = $request->fecha_hora; 
-        // return $cliente_servicio; 
+
+
+
+
+
+        // $cliente_servicio->fecha_hora = $request->fecha_hora;
+        // return $cliente_servicio;
 
     }
 
 
-    
+
 }
