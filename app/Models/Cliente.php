@@ -12,6 +12,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Cliente extends Authenticatable
 {
+
+    use HasRoles;
+
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
     protected $table = 'clientes';
 

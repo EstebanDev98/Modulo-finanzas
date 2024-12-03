@@ -42,7 +42,7 @@ Route::get('/cliente/{id}/pdf', function ($id) {
 
 
 // Ruta para el crud de servicios
-Route::get('servicios', [ServicioController::class, 'index'])->name('servicios.index');
+Route::get('servicios', [ServicioController::class, 'index'])->middleware('can:servicios.index')->name('servicios.index');
 Route::get('servicios/crear', [ServicioController::class, 'create'])->name('servicios.create');
 Route::get('servicios/destroy/{id}', [ServicioController::class, 'destroy'])->name('servicios.destroy');
 Route::get('servicios/mostrar/{id}', [ServicioController::class, 'show'])->name('servicios.show');
