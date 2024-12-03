@@ -12,6 +12,7 @@ use App\Http\Controllers\ServiceController;
 use Illuminate\Routing\RouteRegistrar;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Cliente;
+use App\Models\transferencia;
 
 // Rutas de páginas principales
   Route::get('/', [HomeController::class, 'index']);
@@ -54,7 +55,11 @@ Route::post('servicios/almacenar', [ServicioController::class, 'store'])->name('
 
 
 // Ruta de luis para ver los servicios
-Route::get('/vista_servicios/{id}', [ServiceController::class, 'ver_servicios'])->name('ver.servicios');
-Route::post('/solicitar_servicio/{id}', [ServiceController::class, 'store'])->name('servicio.store');
+Route::get('/vista_servicios', [ServiceController::class, 'ver_servicios'])->name('ver.servicios');
+Route::post('/solicitar_servicio', [ServiceController::class, 'store'])->name('servicio.store');
 
 
+
+Route::get('/transferencias', function () {
+    return view('transferencias');
+})->name('transferencias')->middleware('auth');
