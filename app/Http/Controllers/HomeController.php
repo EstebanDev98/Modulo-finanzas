@@ -34,4 +34,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function interfaz_admin(){
+        return view('inicio-admin');
+    }
+
+    public function interfaz_cliente(){
+        return view('inicio-cliente');
+    }
+    
 }

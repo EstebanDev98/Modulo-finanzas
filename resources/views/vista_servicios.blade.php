@@ -30,7 +30,7 @@
         </div>
         <div style="padding-left:580px;">
           <a id="abrirModal" class="btn btn-primary">solicitar</a>
-          <a class="btn btn-primary" href="{{route('cliente.pdf',$cliente->id)}}">Mis facturas</a>
+          <!-- <a class="btn btn-primary" href="">Mis facturas</a> -->
         </div> 
       </section>
 
@@ -43,7 +43,7 @@
             </div>
             <div class="modal-body">
               <!-- Formulario del modal -->
-              <form action="{{route('servicio.store',$cliente->id)}}" method="post">
+              <form action="{{route('servicio.store')}}" method="post">
                 @csrf
 
                 <div class="">

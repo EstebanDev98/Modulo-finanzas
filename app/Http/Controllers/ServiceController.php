@@ -22,20 +22,22 @@ class ServiceController extends Controller
         $cliente = Cliente::findOrFail(2);
         return view('index', compact('cliente'));
     }
-    public function ver_servicios($idcliente)
+    public function ver_servicios()
     {
         $servicio = Servicio::all();
-        $cliente = Cliente::findOrFail($idcliente);
-        
-        return view('vista_servicios', compact('servicio','cliente'));
+        // $cliente = Cliente::findOrFail($idcliente);
+        return view('vista_servicios', compact('servicio'));
     }
 
     
     
 
-    public function store(Request $request, $idcliente)
+    public function store(Request $request)
     {
-         
+        
+        $cliente = Cliente::findOrFail($idcliente);
+        $servicio = Servicio::findOrFail($idservicio);
+        
         $datos = $request->validate([
             'select_servicio' => 'required|exists:servicios,id',
             'cedula' => 'required|numeric|unique:clientes|integer|between:6,8',

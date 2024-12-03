@@ -26,6 +26,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
 
                 @isset($cliente)
                     <a href="{{ route('cliente.pdf', ['id' => $cliente->id]) }}" class="btn btn-danger btn-sm mt-3" target="_blank">
@@ -36,6 +37,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item active">
+                             <a class="nav-link" href="{{route('cliente.formulario')}}">Buscar clientes</a>
+                        </li>
+                        <li class="nav-item active">
+                             <a class="nav-link" href="{{route('servicios.index')}}">Gestionar servicios</a>
+                        </li>
+                        <li class="nav-item active">
+                             <a class="nav-link" href="{{route('ver.servicios')}}">Mis servicios</a>
+                        </li>
 
                     </ul>
 
