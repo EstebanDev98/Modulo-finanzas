@@ -19,15 +19,15 @@ class RoleSeeder extends Seeder
         $client = Role::create(['name' => 'cliente']);
         // Permisos para el admin
         Permission::create(['name' => 'servicios.index', 'description' => ''])->assignRole($client);
-        Permission::create(['name' => 'servicios.create', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'servicios.destroy', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'servicios.show', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'servicios.edit', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'servicios.update', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'servicios.store', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'clientte.formulario', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'cliente.buscar.post', 'description' => ''])->assignRole($admin);;
-        Permission::create(['name' => 'cliente.detalles', 'description' => ''])->assignRole($admin);;
+        Permission::create(['name' => 'servicios.create', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'servicios.destroy', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'servicios.show', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'servicios.edit', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'servicios.update', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'servicios.store', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'cliente.formulario', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'cliente.buscar.post', 'description' => ''])->assignRole($client);;
+        Permission::create(['name' => 'cliente.detalles', 'description' => ''])->assignRole($client);;
 
 
         Permission::create(['name' => 'cliente.ver.servicios', 'description' => ''])->assignRole($client);;

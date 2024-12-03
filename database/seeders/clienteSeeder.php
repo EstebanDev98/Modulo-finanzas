@@ -19,5 +19,12 @@ class clienteSeeder extends Seeder
             'password'=>bcrypt('password'),
             'identificacion'=>'123456789',
         ])->assignRole('admin');
+
+        cliente::create([
+            'nombre'=>'cliente',
+            'email'=>'cliente@example.com',
+            'password'=>bcrypt('password'),
+            'identificacion'=>'123456781',
+        ])->assignRole('cliente');
     }
 }
